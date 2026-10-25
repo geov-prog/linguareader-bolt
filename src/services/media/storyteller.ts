@@ -94,16 +94,16 @@ export function piperVoiceId(uri: string | null | undefined, lang: StoryLang): s
 
 const MODEL_URLS: Record<string, { model: string; config: string }> = {
   "zh_CN-huayan-medium": {
-    model: "https://github.com/geov-prog/linguareader-models/releases/download/v1/zh_CN-huayan-medium.ort",
-    config: "https://github.com/geov-prog/linguareader-models/releases/download/v1/zh_CN-huayan-medium.onnx.json",
+    model: `https://corsproxy.io/?url=${encodeURIComponent("https://github.com/geov-prog/linguareader-models/releases/download/v1/zh_CN-huayan-medium.ort")}`,
+    config: `https://corsproxy.io/?url=${encodeURIComponent("https://github.com/geov-prog/linguareader-models/releases/download/v1/zh_CN-huayan-medium.onnx.json")}`,
   },
   "en_US-lessac-medium": {
-    model: "https://github.com/geov-prog/linguareader-models/releases/download/v1/en_US-lessac-medium.ort",
-    config: "https://github.com/geov-prog/linguareader-models/releases/download/v1/en_US-lessac-medium.onnx.json",
+    model: `https://corsproxy.io/?url=${encodeURIComponent("https://github.com/geov-prog/linguareader-models/releases/download/v1/en_US-lessac-medium.ort")}`,
+    config: `https://corsproxy.io/?url=${encodeURIComponent("https://github.com/geov-prog/linguareader-models/releases/download/v1/en_US-lessac-medium.onnx.json")}`,
   },
   "en_US-ryan-medium": {
-    model: "https://github.com/geov-prog/linguareader-models/releases/download/v1/en_US-ryan-medium.ort",
-    config: "https://github.com/geov-prog/linguareader-models/releases/download/v1/en_US-ryan-medium.onnx.json",
+    model: `https://corsproxy.io/?url=${encodeURIComponent("https://github.com/geov-prog/linguareader-models/releases/download/v1/en_US-ryan-medium.ort")}`,
+    config: `https://corsproxy.io/?url=${encodeURIComponent("https://github.com/geov-prog/linguareader-models/releases/download/v1/en_US-ryan-medium.onnx.json")}`,
   },
 };
 
