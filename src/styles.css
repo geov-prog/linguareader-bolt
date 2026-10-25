@@ -1,0 +1,488 @@
+@import "@fontsource-variable/outfit";
+@import "@fontsource-variable/newsreader";
+@import "@fontsource-variable/newsreader/wght-italic.css";
+@import "tailwindcss";
+@import "./index.css";
+
+:root {
+  --paper: #f2ece2;
+  --paper-raised: #faf6ef;
+  --paper-sunken: #e7dfd2;
+  --ink: #1c1915;
+  --ink-soft: #3f3a34;
+  --muted: #6b6458;
+  --faint: #9a9286;
+  --line: #d9d0c2;
+  --pine: #2f4f4a;
+  --pine-fg: #f4efe6;
+  --mark: #e4d5b5;
+  --danger: #8f3d32;
+  --shadow-border:
+    0 0 0 1px rgba(28, 25, 21, 0.06),
+    0 1px 2px -1px rgba(28, 25, 21, 0.06),
+    0 2px 4px 0 rgba(28, 25, 21, 0.04);
+  --shadow-border-hover:
+    0 0 0 1px rgba(28, 25, 21, 0.1),
+    0 1px 2px -1px rgba(28, 25, 21, 0.08),
+    0 2px 6px 0 rgba(28, 25, 21, 0.06);
+  --motion-stagger: 40ms;
+  --motion-micro: 80ms;
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --motion-medium: 350ms;
+  --motion-slow: 400ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --player-bar-height: 11.75rem;
+  --player-gutter: 24px;
+  --player-clearance: calc(var(--player-bar-height) + var(--player-gutter));
+  --control-min: 2.75rem;
+}
+
+[data-theme="night"] {
+  --paper: #161412;
+  --paper-raised: #1e1b18;
+  --paper-sunken: #100e0c;
+  --ink: #ece6db;
+  --ink-soft: #c9c2b6;
+  --muted: #9a9286;
+  --faint: #6e685e;
+  --line: #2e2a25;
+  --pine: #8aa39a;
+  --pine-fg: #161412;
+  --mark: #3a3428;
+  --danger: #d9897e;
+  --shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --shadow-border-hover: 0 0 0 1px rgba(255, 255, 255, 0.13);
+}
+
+html[data-accent="clay"] {
+  --pine: #8a4b32;
+  --pine-fg: #faf6ef;
+  --mark: #edd8c4;
+}
+html[data-theme="night"][data-accent="clay"] {
+  --pine: #e0a07a;
+  --pine-fg: #161412;
+  --mark: #3a2a22;
+}
+html[data-accent="indigo"] {
+  --pine: #314a6b;
+  --pine-fg: #f4efe6;
+  --mark: #d5deea;
+}
+html[data-theme="night"][data-accent="indigo"] {
+  --pine: #9eb4d1;
+  --pine-fg: #161412;
+  --mark: #243044;
+}
+html[data-accent="plum"] {
+  --pine: #5c3d52;
+  --pine-fg: #f4efe6;
+  --mark: #e4d4dc;
+}
+html[data-theme="night"][data-accent="plum"] {
+  --pine: #c9a6b8;
+  --pine-fg: #161412;
+  --mark: #32242c;
+}
+
+html[data-font="sans"] {
+  --font-serif: var(--font-sans);
+  --font-display: var(--font-sans);
+}
+html[data-font="kai"] {
+  --font-serif: "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif CJK SC", serif;
+  --font-display: "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif CJK SC", serif;
+}
+html[data-font="song"] {
+  --font-serif: "Songti SC", "SimSun", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  --font-display: "Songti SC", "SimSun", "Noto Serif CJK SC", serif;
+}
+
+html[data-control="compact"] {
+  --control-min: 2.25rem;
+}
+html[data-control="comfortable"] {
+  --control-min: 2.75rem;
+}
+html[data-control="large"] {
+  --control-min: 3.25rem;
+}
+
+html[data-wallpaper="linen"] body,
+html[data-wallpaper="linen"] [data-app-shell] {
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--ink) 7%, transparent) 0 1px,
+    transparent 1px 8px
+  );
+}
+html[data-wallpaper="moss"] body,
+html[data-wallpaper="moss"] [data-app-shell] {
+  background-color: var(--paper);
+  background-image: radial-gradient(1200px 700px at 10% -10%, color-mix(in srgb, var(--pine) 22%, var(--paper)), var(--paper));
+}
+html[data-wallpaper="dusk"] body,
+html[data-wallpaper="dusk"] [data-app-shell] {
+  background-color: var(--paper);
+  background-image: linear-gradient(180deg, color-mix(in srgb, var(--mark) 62%, var(--paper)), var(--paper) 46%);
+}
+html[data-wallpaper="ink"] body,
+html[data-wallpaper="ink"] [data-app-shell] {
+  background-color: var(--paper);
+  background-image: radial-gradient(900px 560px at 100% 0%, color-mix(in srgb, var(--ink) 14%, var(--paper)), var(--paper));
+}
+html[data-wallpaper="custom"] body,
+html[data-wallpaper="custom"] [data-app-shell] {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--paper) 72%, transparent), color-mix(in srgb, var(--paper) 72%, transparent)),
+    var(--wallpaper, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+html {
+  --reader-chrome: 9.5rem;
+  --app-header: 3.5rem;
+}
+html[data-focus="on"] {
+  --reader-chrome: 0.5rem;
+  --app-header: 0px;
+}
+
+html[data-focus="on"] [data-chrome="header"] {
+  height: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+html[data-focus="on"] [data-chrome="book-tools"] {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+html[data-focus="on"] [data-chrome="book-hero"] {
+  display: none;
+}
+
+.overflow-y-auto,
+.overflow-auto {
+  -webkit-overflow-scrolling: touch;
+}
+[data-swatch="clay"] { background: #8a4b32; }
+[data-swatch="indigo"] { background: #314a6b; }
+[data-swatch="plum"] { background: #5c3d52; }
+
+@theme {
+  --font-sans: "Outfit Variable", "Outfit", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader Variable", "Newsreader", "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", "Source Han Serif SC", "Iowan Old Style", Palatino, serif;
+  --font-display: "Newsreader Variable", "Newsreader", "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", "Iowan Old Style", Palatino, serif;
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-sunken: var(--paper-sunken);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-pine: var(--pine);
+  --color-pine-fg: var(--pine-fg);
+  --color-mark: var(--mark);
+  --color-danger: var(--danger);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-bottom: var(--player-clearance);
+    overflow-x: clip;
+    overflow-anchor: none;
+    max-width: 100%;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    background: var(--paper);
+    color: var(--ink);
+    max-width: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    overflow-anchor: none;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Apply 83px offset ONLY on iOS Standalone PWA to clear the Dynamic Island */
+  .ios-pwa-standalone .app-content-wrapper {
+    padding-top: 83px !important;
+  }
+
+  .app-content-wrapper,
+  .lr-shell,
+  .lr-reader-main {
+    overflow-anchor: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  mark {
+    background-color: transparent;
+    color: inherit;
+  }
+}
+
+.paper-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.lr-book-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f4efe6;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.lr-book-loading-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lr-spin {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: none;
+  border: 2px solid rgba(244, 239, 230, 0.35);
+  border-top-color: #f4efe6;
+  border-radius: 999px;
+  animation: lr-spin 0.8s linear infinite;
+}
+
+@keyframes lr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+[data-library-scroll] ul,
+[data-library-scroll] li {
+  list-style: none;
+}
+
+[data-theme="night"] .paper-grain {
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 1023px), (pointer: coarse) {
+  .lr-shell {
+    display: flex;
+    flex-direction: column;
+  }
+  .lr-reader-main {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding-bottom: var(--player-clearance);
+  }
+  .lr-player {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 50;
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    grid-column: auto;
+    grid-row: auto;
+    border: 0;
+    background: transparent;
+    pointer-events: none;
+  }
+  .lr-book-tools {
+    flex-wrap: nowrap;
+    gap: 0.375rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .lr-book-tools::-webkit-scrollbar {
+    display: none;
+  }
+  .lr-book-tools > * {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 639px) {
+  .lr-save-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* Windows and other desktop mice only. Phones keep the bottom player. */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  .lr-shell {
+    display: grid;
+    max-width: none;
+    grid-template-columns: minmax(16rem, 20rem) minmax(0, 1fr) 300px;
+  }
+  .lr-reader-main {
+    padding-bottom: 0.75rem;
+  }
+  .lr-player {
+    position: static;
+    inset: auto;
+    z-index: 1;
+    grid-column: 3;
+    grid-row: 1;
+    display: block;
+    width: 300px;
+    height: calc(100dvh - var(--app-header));
+    max-height: calc(100dvh - var(--app-header));
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: auto;
+    padding: 0.75rem;
+    border-left: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .lr-player-card {
+    width: 100%;
+    max-width: none;
+    border-radius: 0.75rem;
+    box-shadow: none;
+  }
+  .lr-player-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .lr-player-row > .min-w-0 {
+    flex: 1 1 100%;
+    padding-left: 0;
+  }
+  .lr-player-tools {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .lr-voice-row {
+    width: 100% !important;
+  }
+  .lr-book-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .lr-book-sticky.is-active {
+    background: var(--paper-sunken);
+  }
+  .lr-chapter-scroll {
+    max-height: min(58vh, 28rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+@media (max-width: 767px) and (pointer: coarse) {
+  .lr-book-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+  }
+  .lr-book-sticky.is-active {
+    background: var(--paper-sunken);
+  }
+  .lr-chapter-scroll {
+    max-height: min(58svh, 28rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+.lr-epub-html img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.75rem auto;
+}
+
+/* Override break-all to only break when necessary */
+.break-all {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}

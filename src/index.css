@@ -1,0 +1,11 @@
+/* Override break-all to only break when necessary */
+.break-all {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Softens the scroll snap on Android and all platforms */
+[data-sent] {
+  scroll-margin-top: 40vh !important;
+  scroll-margin-bottom: 20vh !important;
+}
